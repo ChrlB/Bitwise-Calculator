@@ -22,7 +22,7 @@ calcBtn.addEventListener("click", ()=>{ //alert("btn clicked");alert(bitwise_ope
     case "^": 
       let answer = solve(exp1, exp2)
       match_length(exp1, exp2);
-      create_solution()
+      bitwise_and_or_xor();
       solution += `answer: ${answer} or ${decimal_toBinary(answer)}`;
       break;
     case "<<": bitwise_leftshift(exp1, exp2); break;
@@ -53,11 +53,11 @@ function match_length(exp1, exp2){
 
   if(exp1len > exp2len){
     for(let i = exp1len - exp2len; i-- > 0;)
-      exp2_binary = '0' + exp2_binary;
+      exp2_binary = ('0' + exp2_binary);
     exp2len = exp1len;
   }else if(exp1len < exp2len){
     for(let i = exp2len - exp1len; i-- > 0;)
-      exp1_binary = '0' + exp1_binary;
+      exp1_binary = ('0' + exp1_binary);
     exp1len = exp2len;
   } 
   solution += ` = ${exp1_binary} ${operator} ${exp2_binary}<br>`;
@@ -74,45 +74,22 @@ function solve(exp1,exp2){
   }
   return answer;
 }
-function create_solution(){
+function bitwise_and_or_xor(){
   console.log(`${exp1_binary} ${operator} ${exp2_binary}`);
-  final_exp1 = "",final_exp2 = "", final_answer = "";
+  let final_exp1 = "",final_exp2 = "", final_answer = "";
+  let bit_result = 0, bit_color = "green";
+
   for(let i = 0; i < exp1len; i++){
-    if((solve(exp1_binary[i], exp2_binary[i])) == 1){alert("in")
-      // alert(`<span color:\"green\">${exp1_binary[i]} </span>`)
-      final_exp1 += `<span style=\"color:green;\">${exp1_binary[i]}</span>`;
-      final_exp2 += `<span style=\"color:green;\">${exp2_binary[i]}</span>`;
-      final_answer += `<span style=\"color:green;\">1</span>`;
+    if((solve(exp1_binary[i], exp2_binary[i])) == 1){ 
+      bit_result = 1; bit_color = "green";
     }else{
-      final_exp1 += `<span style=\"color:red;\">${exp1_binary[i]}</span>`;
-      final_exp2 += `<span style=\"color:red;\">${exp2_binary[i]}</span>`;
-      final_answer += `<span style=\"color:green;\">0</span>`;
+      bit_result = 0; bit_color = "red";
     }
+
+    final_exp1 += `<span style=\"color:${bit_color};\">${exp1_binary[i]}</span>`;
+    final_exp2 += `<span style=\"color:${bit_color};\">${exp2_binary[i]}</span>`;
+    final_answer += `<span style=\"color:green;\">${bit_result}</span>`;
   }
   // alert(exp1_binary)
   solution += `${final_exp1}<br>${final_exp2}<br>= ${final_answer}<br>`
-  
 }
-function bitwise_and(exp1,exp2){
-  let answer = solve(exp1, exp2)
-  solution += `${exp1} ${operator} ${exp2}<br>`;
-  match_length(exp1, exp2);
-  create_solution()
-  solution += `answer: ${answer} or ${decimal_toBinary(answer)}`;
-
-  // console.log(decimal_toBinary(exp1));
-  // console.log(`${exp1} ${operator} ${exp2}`);
-};
-function bitwise_or(exp1,exp2){
-  let answer = exp1 & exp2;
-  solution += `${exp1} ${operator} ${exp2}<br>`;
-  match_length(exp1, exp2);
-  create_solution()
-  solution += `answer: ${answer} or ${decimal_toBinary(answer)}`;
-};
-function bitwise_xor(exp1,exp2){};
-function bitwise_leftshift(exp1,exp2){};
-function bitwise_rightshift(exp1,exp2){};
-function bitwise_revert(exp1){};
-
-

@@ -13,20 +13,49 @@
     </div>
 
     <div>
+      <div>
+      exp1: 
       <input type="text"  id="textfield1">
-      <select id="bitwise_operator">
-        <option value="&">  & </option>
-        <option value="|">  | </option>
-        <option value="^">  ^ </option>
-        <option value="<<"> <<  </option>
-        <option value=">>"> >>  </option>
-        <option value="~">  ~ </option>
+      <select name="" id="textfield1_datatype">
+        <option value="decimal">Decimal</option>
+        <option value="binary">Binary</option>
+        <option value="octa">Octa</option>
+        <option value="hexa">Hexa</option>
       </select>
+      </div>
+
+      <div>
+      exp2: 
       <input type="text" id="textfield2">
+      <select name="" id="textfield1_datatype">
+        <option value="decimal">Decimal</option>
+        <option value="binary">Binary</option>
+        <option value="octa">Octa</option>
+        <option value="hexa">Hexa</option>
+      </select>
+      </div>
+
+      <div>
+      <select id="bitwise_operator">
+        <option value="&">AND  & </option>
+        <option value="|">OR  | </option>
+        <option value="^">XOR  ^ </option>
+        <option value="<<">LEFTSHIFT <<  </option>
+        <option value=">>">RIGHTSHIFT >>  </option>
+        <option value="~">REVERT  ~ </option>
+      </select>
+      </div>
+
+      <div>
+      Result:
       <input type="text" id="answer_field">
+      </div>
     </div>
 
-    <button id="calcBtn">calculate</button>
+    <div>
+      <button id="calcBtn">calculate</button>
+    </div>
+
     <div>
       <div id="solution_area" ></div>
     </div>
